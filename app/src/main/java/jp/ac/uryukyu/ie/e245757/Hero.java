@@ -9,10 +9,36 @@ package jp.ac.uryukyu.ie.e245757;
  * Created by tnal on 2016/11/13.
  */
 public class Hero {
-    public String name;
-    public int hitPoint;
-    public int attack;
-    public boolean dead;
+    private String name;
+    private int hitPoint;
+    private int attack;
+    private boolean dead;
+
+// getterとsetter
+    public String getName(){
+        return name;
+    }
+    public void setName(String name){
+        this.name = name;
+    }
+    public int getHitPoint() {
+        return hitPoint;
+    }
+    public void setHitPoint(int hitPoint) {
+        this.hitPoint = hitPoint;
+    }
+    public int getAttack() {
+        return attack;
+    }
+    public void setAttack(int attack) {
+        this.attack = attack;
+    }
+    public boolean getDead() {
+        return dead;
+    }
+    public void setDead(boolean dead) {
+        this.dead = dead;
+    }
 
     /**
      * コンストラクタ。名前、最大HP、攻撃力を指定する。
@@ -22,9 +48,9 @@ public class Hero {
      */
     public Hero (String name, int maximumHP, int attack) {
         this.name = name;
-        hitPoint = maximumHP;
+        this.hitPoint = maximumHP;
         this.attack = attack;
-        dead = false;
+        this.dead = false;
         System.out.printf("%sのHPは%d。攻撃力は%dです。\n", name, maximumHP, attack);
     }
 
@@ -34,8 +60,8 @@ public class Hero {
      * @param e 攻撃対象
      */
     public void attack(Enemy e){
-        int damage = (int)(Math.random() * attack);
-        System.out.printf("%sの攻撃！%sに%dのダメージを与えた！！\n", name, e.name, damage);
+        int damage = (int)(Math.random() * this.attack);
+        System.out.printf("%sの攻撃！%sに%dのダメージを与えた！！\n", name, e.getName(), damage);
         e.wounded(damage);
     }
 
